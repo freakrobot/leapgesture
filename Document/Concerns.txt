@@ -1,0 +1,6 @@
+1.我不太懂api一般是怎么设计的。。。。我在考虑要不要把leapcom那部分就做成socket，然后我们的code整个就是一个独立的进程。然后不论是本地还是远程，反正都是通过socket来通信。这样的一个好处是，别人如果要使用我们的code，应该最多leapcom对他们开源就好了。
+2.然后我在想的一点是我们是应该先非常详细的写一个gesture，比如说两根手指的手枪，甚至是一根手指的动作先练练手呢，还是要先建立起一个非常general的gesture class，然后每种具体的gesture就是重构某个函数。
+3.我记得leap好像只支持两只手的？那LeapGestureList最多就是两个LeapGesture？
+4.话说类，函数，变量的命名方法，我们是讨论个规范，还是遵循哪个规范？
+5.具体点的话我觉得fire，balance和click，push好像不是一个层次的概念。。。。
+6.LeapComm这个变量不知道应该是所有LeapGesture共用呢，还是应该每个LeapGesture各一个
