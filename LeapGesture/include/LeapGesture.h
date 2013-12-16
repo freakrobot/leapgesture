@@ -24,10 +24,10 @@ public:
 	LeapGesture(void);
 	~LeapGesture(void);
 	virtual int recognize(void);
-	bool isRightHand(void);
+	bool is_right_hand(void);
 private:
-	bool is_right_hand;
-	int forefinger_id;
+	bool _is_right_hand;
+	int _forefinger_id;
 };
 
 }

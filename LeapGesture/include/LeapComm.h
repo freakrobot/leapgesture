@@ -33,9 +33,9 @@ namespace LeapClient
 			int lc_send(char*);
 			
 		private:
-			WSADATA lc_WSAData;
-			SOCKET sock;
-			struct sockaddr_in ServerAddr;
+			WSADATA _lc_WSAData;
+			SOCKET _sock;
+			struct sockaddr_in _ServerAddr;
 	};
 }
 

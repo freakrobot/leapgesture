@@ -14,26 +14,24 @@ See the License for the specific language governing permissions and
 limitations under the License.
 \******************************************************************************/
 #include "include/LeapGestureManager.h"
-using namespace LeapClient;
 
-LeapGestureManager::LeapGestureManager(void)
-{
-	gestureCount = 0;
+namespace LeapClient {
+LeapGestureManager::LeapGestureManager(void) {
+	_gesture_count = 0;
 }
 
 
-LeapGestureManager::~LeapGestureManager(void)
-{
+LeapGestureManager::~LeapGestureManager(void) {
 }
 
 
-int LeapGestureManager::registerGesture(void)
-{
+int LeapGestureManager::register_gesture(void) {
 	return 0;
 }
 
 
-int LeapGestureManager::gestureType(void)
-{
+int LeapGestureManager::gesture_type(void) {
 	return 0;
+}
+
 }

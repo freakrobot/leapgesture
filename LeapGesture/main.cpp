@@ -185,15 +185,12 @@ int main() {
   // Remove the sample listener when done
   controller.removeListener(listener);
   */
-  LeapClient::LeapComm lc_comm;
-  while (1)
-  {
-	
-	char c;
-	std::cin >> c;
-	if (c='c')
-	{
-		lc_comm.lc_send("hellow");
+  LeapClient::LeapComm leapComm;
+  while ( 1 ) {
+	char get_char_c_to_continue;
+	std::cin >> get_char_c_to_continue;
+	if ( get_char_c_to_continue == 'c' ) {
+		leapComm.lc_send("hellow");
 	}
   }
   return 0;

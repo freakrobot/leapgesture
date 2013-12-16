@@ -28,11 +28,11 @@ public:
 	~LeapGestureManager(void);
 	std::vector<LeapGesture> gesture_list;
 	LeapComm gesture_comm;
-	int registerGesture(void);
-	int gestureType(void);
+	int register_gesture(void);
+	int gesture_type(void);
 
 private:
-	int gestureCount;
+	int _gesture_count;
 };
 
 }
