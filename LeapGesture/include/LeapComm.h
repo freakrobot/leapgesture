@@ -13,27 +13,29 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 \******************************************************************************/
-#include "include/LeapGesture.h"
-using namespace LeapClient;
+#pragma once
+#include <winsock2.h>
+#include <string>
+#include <cstdlib>
+#include <iostream>
+#pragma comment(lib,"ws2_32.lib")
 
-LeapGesture::LeapGesture(void)
+namespace LeapClient
 {
-	forefinger_id = 0;
+	static const char* LC_IPADDR = "127.0.0.1";
+	static const unsigned short LC_PORT = 15501;
+	class LeapComm
+	{
+		public:
+			LeapComm(void);
+			~LeapComm(void);
+
+			int lc_send(char*);
+			
+		private:
+			WSADATA lc_WSAData;
+			SOCKET sock;
+			struct sockaddr_in ServerAddr;
+	};
 }
 
-
-LeapGesture::~LeapGesture(void)
-{
-}
-
-
-int LeapGesture::recognize(void)
-{
-	return 0;
-}
-
-
-bool LeapGesture::isRightHand(void)
-{
-	return false;
-}

@@ -13,27 +13,21 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 \******************************************************************************/
-#include "include/LeapGesture.h"
-using namespace LeapClient;
+#pragma once
 
-LeapGesture::LeapGesture(void)
+namespace LeapClient
 {
-	forefinger_id = 0;
-}
 
-
-LeapGesture::~LeapGesture(void)
+class LeapGesture
 {
-}
+public:
+	LeapGesture(void);
+	~LeapGesture(void);
+	virtual int recognize(void);
+	bool isRightHand(void);
+private:
+	bool is_right_hand;
+	int forefinger_id;
+};
 
-
-int LeapGesture::recognize(void)
-{
-	return 0;
-}
-
-
-bool LeapGesture::isRightHand(void)
-{
-	return false;
 }

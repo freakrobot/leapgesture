@@ -91,7 +91,7 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>..\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\include;include</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -185,15 +185,11 @@
     <ClCompile Include="LeapGesture.cpp" />
     <ClCompile Include="LeapGestureManager.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="Push.cpp" />
-    <ClCompile Include="Tracking.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="LeapComm.h" />
-    <ClInclude Include="LeapGesture.h" />
-    <ClInclude Include="LeapGestureManager.h" />
-    <ClInclude Include="Push.h" />
-    <ClInclude Include="Tracking.h" />
+    <ClInclude Include="include\LeapComm.h" />
+    <ClInclude Include="include\LeapGesture.h" />
+    <ClInclude Include="include\LeapGestureManager.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

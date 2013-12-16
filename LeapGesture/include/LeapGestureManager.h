@@ -13,27 +13,26 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 \******************************************************************************/
+#pragma once
+#include <vector>
 #include "include/LeapGesture.h"
-using namespace LeapClient;
+#include "include/LeapComm.h"
 
-LeapGesture::LeapGesture(void)
+namespace LeapClient
 {
-	forefinger_id = 0;
-}
 
-
-LeapGesture::~LeapGesture(void)
+class LeapGestureManager
 {
-}
+public:
+	LeapGestureManager(void);
+	~LeapGestureManager(void);
+	std::vector<LeapGesture> gesture_list;
+	LeapComm gesture_comm;
+	int registerGesture(void);
+	int gestureType(void);
 
+private:
+	int gestureCount;
+};
 
-int LeapGesture::recognize(void)
-{
-	return 0;
-}
-
-
-bool LeapGesture::isRightHand(void)
-{
-	return false;
 }
