@@ -182,10 +182,18 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="LeapComm.cpp" />
+    <ClCompile Include="LeapGesture.cpp" />
+    <ClCompile Include="LeapGestureManager.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Push.cpp" />
+    <ClCompile Include="Tracking.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="LeapComm.h" />
+    <ClInclude Include="LeapGesture.h" />
+    <ClInclude Include="LeapGestureManager.h" />
+    <ClInclude Include="Push.h" />
+    <ClInclude Include="Tracking.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

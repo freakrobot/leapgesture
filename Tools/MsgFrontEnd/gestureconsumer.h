@@ -1,35 +1,23 @@
 #ifndef GESTURECONSUMER_H
 #define GESTURECONSUMER_H
 
-#include <QtWidgets>
 #include <QtNetwork>
-#include <stdlib.h>
 #include <QObject>
-#include <iostream>
+#include <QTcpServer>
+#include <QTcpSocket>
 
-class QLabel;
-class QPushButton;
-class QTcpServer;
-class QNetworkSession;
-class GestureConsumer : public QDialog
+class Server: public QObject
 {
-    Q_OBJECT
+Q_OBJECT
 public:
-    explicit GestureConsumer(QWidget *parent = 0);
-
-signals:
-
+  Server(QObject * parent = 0);
+  ~Server();
 public slots:
-    void sessionOpened();
-    void gc_recv();
-
+  void acceptConnection();
+  void startRead();
 private:
-    QLabel *statusLabel;
-    QPushButton *quitButton;
-    QTcpServer *tcpServer;
-    QStringList fortunes;
-    QNetworkSession *networkSession;
-
+  QTcpServer server;
+  QTcpSocket* client;
 };
 
 #endif // GESTURECONSUMER_H

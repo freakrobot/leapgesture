@@ -12,11 +12,11 @@ TARGET = MsgFrontEnd
 TEMPLATE = app
 
 
-SOURCES += main.cpp\
-        mainwindow.cpp \
+SOURCES += main.cpp\       
     gestureconsumer.cpp
+#mainwindow.cpp \
 
-HEADERS  += mainwindow.h \
-    gestureconsumer.h
+HEADERS  += gestureconsumer.h
 
-FORMS    += mainwindow.ui
+#mainwindow.h \
+#FORMS    += mainwindow.ui

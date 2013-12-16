@@ -4,6 +4,7 @@
 
 #include <iostream>
 #include "Leap.h"
+#include "LeapComm.h"
 using namespace Leap;
 
 class SampleListener : public Listener {
@@ -159,7 +160,7 @@ void SampleListener::onFocusLost(const Controller& controller) {
 
 int main() {
   // Create a sample listener and controller
-  SampleListener listener;
+  /*SampleListener listener;
   Controller controller;
 
   // Have the sample listener receive events from the controller
@@ -171,6 +172,17 @@ int main() {
 
   // Remove the sample listener when done
   controller.removeListener(listener);
-
+  */
+  LeapClient::LeapComm lc_comm;
+  while (1)
+  {
+	
+	char c;
+	std::cin >> c;
+	if (c='c')
+	{
+		lc_comm.lc_send("hellow");
+	}
+  }
   return 0;
 }
