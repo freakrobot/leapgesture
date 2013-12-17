@@ -32,5 +32,5 @@ void Server::startRead()
   cerr << "get msg!" << endl;
   char *buffer = (char*)malloc(2048*sizeof(char));
   client->read(buffer,2048);
-  cerr << *buffer << endl;
+  cerr << buffer << endl;
 }

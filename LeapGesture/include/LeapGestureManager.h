@@ -18,17 +18,16 @@ limitations under the License.
 #include "include/LeapGesture.h"
 #include "include/LeapComm.h"
 
-namespace LeapClient
-{
+namespace LeapClient {
 
-class LeapGestureManager
-{
+class LeapGestureManager {
+
 public:
 	LeapGestureManager(void);
 	~LeapGestureManager(void);
 	std::vector<LeapGesture> gesture_list;
 	LeapComm gesture_comm;
-	int register_gesture(void);
+	int registered_gestures(void);
 	int gesture_type(void);
 
 private:

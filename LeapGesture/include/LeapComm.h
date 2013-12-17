@@ -20,22 +20,20 @@ limitations under the License.
 #include <iostream>
 #pragma comment(lib,"ws2_32.lib")
 
-namespace LeapClient
-{
-	static const char* LC_IPADDR = "127.0.0.1";
-	static const unsigned short LC_PORT = 15501;
-	class LeapComm
-	{
+namespace LeapClient {
+	class LeapComm {
 		public:
 			LeapComm(void);
 			~LeapComm(void);
-
+			int lc_initialize();
 			int lc_send(char*);
 			
 		private:
 			WSADATA _lc_WSAData;
 			SOCKET _sock;
 			struct sockaddr_in _ServerAddr;
+			static char* LC_IPADDR;
+			static unsigned short LC_PORT;
 	};
 }
 
