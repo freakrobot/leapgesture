@@ -15,11 +15,9 @@ limitations under the License.
 \******************************************************************************/
 #pragma once
 
-namespace LeapClient
-{
+namespace LeapClient {
 
-class LeapGesture
-{
+class LeapGesture {
 public:
 	LeapGesture(void);
 	~LeapGesture(void);
@@ -27,7 +25,6 @@ public:
 	bool is_right_hand(void);
 private:
 	bool _is_right_hand;
-	int _forefinger_id;
 };
 
 }

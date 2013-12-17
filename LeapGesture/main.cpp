@@ -186,6 +186,8 @@ int main() {
   controller.removeListener(listener);
   */
   LeapClient::LeapComm leapComm;
+  int ret = leapComm.lc_initialize();
+  if (ret == -1) exit(-1);
   while ( 1 ) {
 	char get_char_c_to_continue;
 	std::cin >> get_char_c_to_continue;

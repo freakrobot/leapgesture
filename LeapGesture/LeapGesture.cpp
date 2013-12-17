@@ -18,7 +18,7 @@ limitations under the License.
 namespace LeapClient {
 
 LeapGesture::LeapGesture(void) {
-	_forefinger_id = 0;
+	
 }
 
 

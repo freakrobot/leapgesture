@@ -25,7 +25,7 @@ LeapGestureManager::~LeapGestureManager(void) {
 }
 
 
-int LeapGestureManager::register_gesture(void) {
+int LeapGestureManager::registered_gestures(void) {
 	return 0;
 }
 
