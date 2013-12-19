@@ -16,17 +16,28 @@ limitations under the License.
 #ifndef _LEAP_GESTURE_H_
 #define _LEAP_GESTURE_H_
 #pragma once
+#include <iostream>
+#include "Leap.h"
+using namespace Leap;
 
 namespace LeapClient {
 
+typedef enum {
+    HAND_MODE_UNKNOWN,
+    HAND_MODE_RIGHT_HAND,
+    HAND_MODE_LEFT_HAND,
+    HAND_MODE_AUTO,
+} hand_mode_t;
+
 class LeapGesture {
 public:
-	LeapGesture(void);
-	~LeapGesture(void);
-	virtual int recognize(void);
-	bool is_right_hand(void);
+        LeapGesture(void);
+        ~LeapGesture(void);
+        int get_hand_mode(void);
+        void set_hand_mode(int hand_mode);
+		void initialize_gesture( const Hand hand );
 private:
-	bool _is_right_hand;
+        int _hand_mode;
 };
 
 }

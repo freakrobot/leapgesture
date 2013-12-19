@@ -18,21 +18,21 @@ limitations under the License.
 namespace LeapClient {
 
 LeapGesture::LeapGesture(void) {
-	
 }
 
-
-LeapGesture::~LeapGesture(void){
+LeapGesture::~LeapGesture(void) {
 }
 
-
-int LeapGesture::recognize(void){
-	return 0;
+int LeapGesture::get_hand_mode(void) {
+    return _hand_mode;
 }
 
+void LeapGesture::set_hand_mode(int hand_mode) {
+    _hand_mode = hand_mode;
+}
 
-bool LeapGesture::is_right_hand(void){
-	return false;
+void LeapGesture::initialize_gesture( const Hand hand ) {
+	std::cout << "to do" << std::endl;
 }
 
 }

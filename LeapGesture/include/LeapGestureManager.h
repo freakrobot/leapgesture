@@ -17,23 +17,38 @@ limitations under the License.
 #define _LEAP_GESTURE_MANAGER_H_
 #pragma once
 #include <vector>
+#include "Leap.h"
 #include "include/LeapGesture.h"
 #include "include/LeapComm.h"
+using namespace Leap;
 
 namespace LeapClient {
 
-class LeapGestureManager {
+typedef enum {
+    MANAGER_STATE_UNKNOWN,
+    MANAGER_STATE_RECOGNIZED,
+    MANAGER_STATE_LOST,
+} manager_state_t;
+
+typedef enum {
+	RECOGNIZING_STATE_UNKNOWN,
+    RECOGNIZING_STATE_SUCCESS,
+	RECOGNIZING_STATE_FAILED,
+} recognizing_state_state_t;
+
+class LeapGestureManager : public Listener {
 
 public:
-	LeapGestureManager(void);
-	~LeapGestureManager(void);
-	std::vector<LeapGesture> gesture_list;
-	LeapComm gesture_comm;
-	int registered_gestures(void);
-	int gesture_type(void);
-
+        LeapGestureManager(void);
+        ~LeapGestureManager(void);
+		virtual void onFrame(const Controller& controller);
+        int config_gestures(void);
+		void set_manager_state(int state);
+		int get_manager_state(void);
+		int recognizing_gestures( const Frame frame );
+        std::vector<LeapGesture> gesture_list;
 private:
-	int _gesture_count;
+        int _manager_state;
 };
 
 }
