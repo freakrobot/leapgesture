@@ -32,22 +32,23 @@ int LeapGestureManager::config_gestures(void) {
     
     //Hard code temporarily
     LeapGesture first_gesture;
-    first_gesture.set_hand_mode( HAND_MODE_RIGHT_HAND );
+    first_gesture.set_hand_mode( HAND_MODE_AUTO );
     gesture_list.push_back( first_gesture );
     return 0;
 }
 
-void LeapGestureManager::set_manager_state( int state )
+void LeapGestureManager::set_manager_state( manager_state_t state )
 {
+	std::cout << "Manager state switch from " << _manager_state << " to " << state << std::endl;
 	_manager_state = state;
 }
 
-int LeapGestureManager::get_manager_state( void )
+manager_state_t LeapGestureManager::get_manager_state( void )
 {
 	return _manager_state;
 }
 
-int LeapGestureManager::recognizing_gestures( const Frame frame )
+recognizing_state_state_t LeapGestureManager::recognizing_gestures( const Frame frame )
 {
 	const HandList hands = frame.hands();
 	if( hands.count() != gesture_list.size() )
@@ -65,7 +66,11 @@ int LeapGestureManager::recognizing_gestures( const Frame frame )
 			goto reconizing_failed;
 		}
 
-		gesture_list[i].initialize_gesture( hand );
+		if( gesture_list[i].initialize_gesture( hand ) )
+		{
+			config_gestures(); //reset all gestures in the list
+			goto reconizing_failed;
+		}
 	}
 
 	return RECOGNIZING_STATE_SUCCESS;
@@ -80,26 +85,24 @@ void LeapGestureManager::onFrame( const Controller& controller ) {
 		case MANAGER_STATE_UNKNOWN: {
 			static int success_time = 0;
 			int recognizing_result = RECOGNIZING_STATE_UNKNOWN;
-			std::cout << "unknown state to do" << std::endl;
 			recognizing_result = recognizing_gestures( frame );
 			if( recognizing_result == RECOGNIZING_STATE_FAILED )
 			{
+				success_time = 0;
 			} else if ( recognizing_result == RECOGNIZING_STATE_SUCCESS )
 			{
 				success_time++;
 			}
-			if( success_time > 10 )
+			if( success_time > RECOGNIZING_THRESHOLD )
 			{
 				set_manager_state( MANAGER_STATE_RECOGNIZED );
 			}
 			break;
 		}
 		case MANAGER_STATE_RECOGNIZED: {
-			std::cout << "recognized state to do" << std::endl;
 			break;
 		}
 		case MANAGER_STATE_LOST: {
-			std::cout << "lost state to do" << std::endl;
 			break;
 		}
 		default: {

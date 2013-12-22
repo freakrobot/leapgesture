@@ -13,38 +13,15 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 \******************************************************************************/
-#ifndef _LEAP_GESTURE_H_
-#define _LEAP_GESTURE_H_
-#pragma once
-#include <iostream>
-#include "Leap.h"
-#include "include/PimHand.h"
-using namespace Leap;
+#ifndef _PIM_FINGER_H_
+#define _PIM_FINGER_H_
 
-namespace LeapClient {
+namespace PimClient {
 
-typedef enum {
-    HAND_MODE_UNKNOWN,
-    HAND_MODE_RIGHT_HAND,
-    HAND_MODE_LEFT_HAND,
-    HAND_MODE_AUTO,
-} hand_mode_t;
-
-#define MY_HAND_ID_IS_UNKNOWN (-1)
-
-class LeapGesture {
+class PimFinger {
 public:
-        LeapGesture(void);
-        ~LeapGesture(void);
-        hand_mode_t get_hand_mode(void);
-        void set_hand_mode(hand_mode_t hand_mode);
-        void set_hand_id(int id);
-        int get_hand_id(void);
-        int initialize_gesture( const Hand hand );
-private:
-        hand_mode_t _hand_mode;
-        int _my_hand_id;
-        PimClient::PimHand _my_hand;
+        PimFinger(void);
+        ~PimFinger(void);
 };
 
 }

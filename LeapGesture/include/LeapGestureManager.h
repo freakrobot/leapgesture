@@ -36,6 +36,8 @@ typedef enum {
 	RECOGNIZING_STATE_FAILED,
 } recognizing_state_state_t;
 
+#define RECOGNIZING_THRESHOLD 10 //TODO: may be configurable
+
 class LeapGestureManager : public Listener {
 
 public:
@@ -43,12 +45,12 @@ public:
         ~LeapGestureManager(void);
 		virtual void onFrame(const Controller& controller);
         int config_gestures(void);
-		void set_manager_state(int state);
-		int get_manager_state(void);
-		int recognizing_gestures( const Frame frame );
+		void set_manager_state(manager_state_t state);
+		manager_state_t get_manager_state(void);
+		recognizing_state_state_t recognizing_gestures( const Frame frame );
         std::vector<LeapGesture> gesture_list;
 private:
-        int _manager_state;
+        manager_state_t _manager_state;
 };
 
 }
