@@ -196,9 +196,6 @@
     <ClInclude Include="include\PimHand.h" />
     <ClInclude Include="include\PimVector.h" />
   </ItemGroup>
-  <ItemGroup>
-    <None Include="include\LeapUtility" />
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
