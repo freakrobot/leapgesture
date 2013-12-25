@@ -1,0 +1,44 @@
+namespace LeapUtility {
+
+//compare function for Hand Object
+bool compare_obj(Hand *a, Hand *b) {
+    if (a->palmPosition().x > b->palmPosition().x) {
+        return 1;
+    }
+    else 
+        return 0;
+}
+
+//compare function for finger object
+bool compare_obj(Finger *a, Finger *b)
+{
+    std::cout << a->tipPosition().x << std::endl;
+	std::cout << b->tipPosition().x << std::endl;
+    if (a->tipPosition().x > b->tipPosition().x)
+    {
+        return 1;
+    }
+    else 
+        return 0;
+}
+
+template <typename T1, typename T2>
+void list_sort(T1 obj_list, T2 **pointer_list, int OBJ_N) {
+    //Make the array of pointer point to the obj_list
+    for (int i=0; i != OBJ_N; ++i) {
+        pointer_list[i] = &obj_list[i];
+    }
+    for (int i = 0; i != OBJ_N; ++i) {
+        for (int j = i-1; j >= 0; --j) {
+		    std::cout << pointer_list[i]->tipPosition().x << std::endl;
+			std::cout << pointer_list[j]->tipPosition().x << std::endl;
+            if (compare_obj(pointer_list[i],pointer_list[j])) {
+                T2 *tmp = pointer_list[i];
+                pointer_list[i] = pointer_list[j];
+                pointer_list[j] = tmp;
+            }
+        }
+    }
+}
+
+}

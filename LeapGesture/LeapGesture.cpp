@@ -15,6 +15,8 @@ limitations under the License.
 \******************************************************************************/
 #include "include/LeapGesture.h"
 #include "include/PimVector.h"
+#include "include/LeapUtility"
+#include <iterator>
 
 namespace LeapClient {
 
@@ -85,6 +87,26 @@ int LeapGesture::initialize_gesture( const Hand hand ) {
 	my_palm_position.y = hand.palmPosition().y;
 	my_palm_position.z = hand.palmPosition().z;
 	_my_hand.set_palm_position( my_palm_position );
+
+	const FingerList fingers = hand.fingers();
+	int i=0;
+
+	for (FingerList::const_iterator it=fingers.begin();it != fingers.end(),i < fingers.count();++it,++i) {
+		std::cout << *it << " " << fingers[i].tipPosition().x << " " << std::endl;
+	}
+	std::cout << std::endl;
+
+	Finger* tmp = const_cast<Finger*>(&fingers[i]);
+	std::cout << tmp->tipPosition().x << std::endl;
+
+	int num_fingers = fingers.count();
+	Finger **pointer_list = new Finger* [num_fingers];
+	LeapUtility::list_sort<FingerList,Finger>(fingers,pointer_list,fingers.count());
+
+	for (FingerList::const_iterator it=fingers.begin();it != fingers.end();++it) {
+		std::cout << *it << std::endl;
+	}
+	std::cout << std::endl;
 	
 	//TODO: populate the _my_hand in details
 	
