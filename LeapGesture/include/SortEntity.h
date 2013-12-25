@@ -13,23 +13,19 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 \******************************************************************************/
-#ifndef _PIM_FINGER_H_
-#define _PIM_FINGER_H_
-#include "include/PimVector.h"
+#ifndef _SORT_ENTITY_H_
+#define _SORT_ENTITY_H_
 
-namespace PimClient {
+namespace LeapClient {
 
-class PimFinger {
+class SortEntity {
 public:
-        PimFinger(void);
-        ~PimFinger(void);
-		void set_tip_position( PimClient::PimVector position );
-
-		int id;
-private:
-		PimClient::PimVector _tip_position;
+	int id;
+	float position;
+	bool operator < (const LeapClient::SortEntity& other) const
+	{
+		return (position < other.position);
+	};
 };
-
 }
-
 #endif

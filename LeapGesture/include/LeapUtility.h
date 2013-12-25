@@ -13,23 +13,18 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 \******************************************************************************/
-#ifndef _PIM_FINGER_H_
-#define _PIM_FINGER_H_
-#include "include/PimVector.h"
+#ifndef _LEAP_UTILITY_H_
+#define _LEAP_UTILITY_H_
+#include <vector>
+#include "Leap.h"
+#include "PimVector.h"
+using namespace Leap;
 
-namespace PimClient {
-
-class PimFinger {
+namespace LeapClient {
+class LeapUtility {
 public:
-        PimFinger(void);
-        ~PimFinger(void);
-		void set_tip_position( PimClient::PimVector position );
-
-		int id;
-private:
-		PimClient::PimVector _tip_position;
+	PimClient::PimVector vector_translate_from_leap_to_pim( Vector leap_vector );
+	std::vector<int> sort_fingers_based_on_position_x( FingerList fingers );
 };
-
 }
-
 #endif

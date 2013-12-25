@@ -184,6 +184,7 @@
     <ClCompile Include="LeapComm.cpp" />
     <ClCompile Include="LeapGesture.cpp" />
     <ClCompile Include="LeapGestureManager.cpp" />
+    <ClCompile Include="LeapUtility.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="PimFinger.cpp" />
     <ClCompile Include="PimHand.cpp" />
@@ -192,9 +193,11 @@
     <ClInclude Include="include\LeapComm.h" />
     <ClInclude Include="include\LeapGesture.h" />
     <ClInclude Include="include\LeapGestureManager.h" />
+    <ClInclude Include="include\LeapUtility.h" />
     <ClInclude Include="include\PimFinger.h" />
     <ClInclude Include="include\PimHand.h" />
     <ClInclude Include="include\PimVector.h" />
+    <ClInclude Include="include\SortEntity.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

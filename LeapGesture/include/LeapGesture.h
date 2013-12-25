@@ -19,6 +19,7 @@ limitations under the License.
 #include <iostream>
 #include "Leap.h"
 #include "include/PimHand.h"
+#include "include/LeapUtility.h"
 using namespace Leap;
 
 namespace LeapClient {
@@ -30,7 +31,10 @@ typedef enum {
     HAND_MODE_AUTO,
 } hand_mode_t;
 
-#define MY_HAND_ID_IS_UNKNOWN (-1)
+typedef enum {
+	INITIALIZE_GESTURE_SUCCESS,
+	INITIALIZE_GESTURE_FAILED,
+} initialize_gesture_result_t;
 
 class LeapGesture {
 public:
@@ -40,11 +44,23 @@ public:
         void set_hand_mode(hand_mode_t hand_mode);
         void set_hand_id(int id);
         int get_hand_id(void);
-        int initialize_gesture( const Hand hand );
+		void set_thumb_id(int id);
+		int get_thumb_id(void);
+		void set_forefinger_id(int id);
+		int get_forefinger_id(void);
+		void set_middle_finger_id(int id);
+		int get_middle_finger_id(void);
+		void set_ring_finger_id(int id);
+		int get_ring_finger_id(void);
+		void set_little_finger_id(int id);
+		int get_little_finger_id(void);
+        initialize_gesture_result_t initialize_gesture( const Hand hand );
+
+		static const int UNKNOWN_ID = -1;
+		PimClient::PimHand my_hand;
 private:
         hand_mode_t _hand_mode;
-        int _my_hand_id;
-        PimClient::PimHand _my_hand;
+		LeapClient::LeapUtility _my_leap_utility;
 };
 
 }

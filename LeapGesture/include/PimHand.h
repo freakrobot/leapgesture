@@ -27,6 +27,7 @@ public:
         ~PimHand(void);
 		void set_palm_position( PimClient::PimVector position );
 
+		int id;
 		PimClient::PimFinger thumb;
 		PimClient::PimFinger forefinger;
 		PimClient::PimFinger middle_finger;

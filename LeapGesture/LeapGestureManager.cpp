@@ -20,6 +20,7 @@ namespace LeapClient {
 LeapGestureManager::LeapGestureManager(void) : Listener() {
     //TODO: May pass config info as the argument
     config_gestures();
+	_manager_state = MANAGER_STATE_UNKNOWN;
 	set_manager_state( MANAGER_STATE_UNKNOWN );
 }
 
@@ -66,7 +67,7 @@ recognizing_state_state_t LeapGestureManager::recognizing_gestures( const Frame 
 			goto reconizing_failed;
 		}
 
-		if( gesture_list[i].initialize_gesture( hand ) )
+		if( gesture_list[i].initialize_gesture( hand ) != INITIALIZE_GESTURE_SUCCESS )
 		{
 			config_gestures(); //reset all gestures in the list
 			goto reconizing_failed;

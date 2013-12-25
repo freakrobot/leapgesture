@@ -24,4 +24,8 @@ PimFinger::PimFinger(void) {
 PimFinger::~PimFinger(void) {
 }
 
+void PimFinger::set_tip_position( PimClient::PimVector position ) {
+		_tip_position = position;
+}
+
 }
