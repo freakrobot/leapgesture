@@ -13,33 +13,30 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 \******************************************************************************/
+#ifndef _PIM_HAND_H_
+#define _PIM_HAND_H_
 
-#include <iostream>
-#include "include\LeapGestureManager.h"
-#include "Leap.h"
-//#include "LeapComm.h"
-using namespace Leap;
+#include "include/PimFinger.h"
+#include "include/PimVector.h"
 
-int main() {
- // LeapClient::LeapComm leapComm;
- // int ret = leapComm.lc_initialize();
- // if (ret == -1) exit(-1);
- // while ( 1 ) {
-	//char get_char_c_to_continue;
-	//std::cin >> get_char_c_to_continue;
-	//if ( get_char_c_to_continue == 'c' ) {
-	//	leapComm.lc_send("hellow");
-	//}
- // }
-    LeapClient::LeapGestureManager leapGestureManager;
-	Controller controller;
+namespace PimClient {
 
-	controller.addListener( leapGestureManager );
+class PimHand {
+public:
+        PimHand(void);
+        ~PimHand(void);
+		void set_palm_position( PimClient::PimVector position );
 
-	std::cin.get();
+		int id;
+		PimClient::PimFinger thumb;
+		PimClient::PimFinger forefinger;
+		PimClient::PimFinger middle_finger;
+		PimClient::PimFinger ring_finger;
+		PimClient::PimFinger little_finger;
+private:
+		PimClient::PimVector _palm_position;
+};
 
-	controller.removeListener( leapGestureManager );
-
-	std::cin.get();
-    return 0;
 }
+
+#endif

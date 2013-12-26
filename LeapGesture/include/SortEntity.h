@@ -13,33 +13,19 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 \******************************************************************************/
+#ifndef _SORT_ENTITY_H_
+#define _SORT_ENTITY_H_
 
-#include <iostream>
-#include "include\LeapGestureManager.h"
-#include "Leap.h"
-//#include "LeapComm.h"
-using namespace Leap;
+namespace LeapClient {
 
-int main() {
- // LeapClient::LeapComm leapComm;
- // int ret = leapComm.lc_initialize();
- // if (ret == -1) exit(-1);
- // while ( 1 ) {
-	//char get_char_c_to_continue;
-	//std::cin >> get_char_c_to_continue;
-	//if ( get_char_c_to_continue == 'c' ) {
-	//	leapComm.lc_send("hellow");
-	//}
- // }
-    LeapClient::LeapGestureManager leapGestureManager;
-	Controller controller;
-
-	controller.addListener( leapGestureManager );
-
-	std::cin.get();
-
-	controller.removeListener( leapGestureManager );
-
-	std::cin.get();
-    return 0;
+class SortEntity {
+public:
+	int id;
+	float position;
+	bool operator < (const LeapClient::SortEntity& other) const
+	{
+		return (position < other.position);
+	};
+};
 }
+#endif
