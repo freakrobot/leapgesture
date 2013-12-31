@@ -15,11 +15,9 @@ limitations under the License.
 \******************************************************************************/
 #ifndef _LEAP_GESTURE_MANAGER_H_
 #define _LEAP_GESTURE_MANAGER_H_
-#define DEBUG 1
 
 #pragma once
 #include <vector>
-#include <string>
 #include "Leap.h"
 #include "include/LeapGesture.h"
 #include "include/LeapComm.h"
@@ -39,18 +37,6 @@ typedef enum {
 	RECOGNIZING_STATE_FAILED,
 } recognizing_state_state_t;
 
-#if DEBUG
-typedef enum {
-//Err LeapGestureManagerment -- recognition errs
-	RECONIZING_STATE_FAILED,
-//Err LeapGesture -- translation errs
-	INITIALIZE_FAILED,
-//Err PimHand
-//Err PimFinger
-//Err PimVector
-//Err LeapComm -- communication error
-} err_t;
-
 #define RECOGNIZING_THRESHOLD 10 //TODO: may be configurable
 
 class LeapGestureManager : public Listener {
@@ -65,26 +51,8 @@ public:
 		recognizing_state_state_t recognizing_gestures( const Frame frame );
         std::vector<LeapGesture> gesture_list;
 
-#if DEBUG
-		int set_log_level(int);
-		int get_log_level();
-		inline void errWrapper(std::string s, err_t) {
-			if (get_log_level() > 0) {
-				std::cout << "Error in: " << s << "  ";
-				switch (err_t) {
-					case RECONIZING_STATE_FAILED: std::cerr<< "RECONIZING_STATE_FAILED" << std::endl; break;
-					case INITIALIZE_FAILED: std::cerr<< "INITIALIZE_FAILED" << std::endl; break;
-					default: std::cerr << "UFO!UFO!" << std::endl;
-				}
-			}
-		}
-#endif
-
 private:
         manager_state_t _manager_state;
-#if DEBUG
-		static int _log_level;
-#endif
 };
 
 }
