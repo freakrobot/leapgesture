@@ -14,9 +14,12 @@ See the License for the specific language governing permissions and
 limitations under the License.
 \******************************************************************************/
 #include <iostream>
+#include <string>
 #include "include/LeapGestureManager.h"
+#include "include/logging.h"
 
 namespace LeapClient {
+
 LeapGestureManager::LeapGestureManager(void) : Listener() {
     //TODO: May pass config info as the argument
     config_gestures();
@@ -40,7 +43,14 @@ int LeapGestureManager::config_gestures(void) {
 
 void LeapGestureManager::set_manager_state( manager_state_t state )
 {
-	std::cout << "Manager state switch from " << _manager_state << " to " << state << std::endl;
+	//std::cout << "Manager state switch from " << _manager_state << " to " << state << std::endl;
+	// two variant for test
+
+	std::stringstream sstm;
+	sstm << "Manager state switch from " << _manager_state << " to " << state << std::endl;
+	std::string log_string = sstm.str();
+
+	PimClient::Logging::log(PimClient::LOG_LEVEL_RECORDING,log_string);
 	_manager_state = state;
 }
 
