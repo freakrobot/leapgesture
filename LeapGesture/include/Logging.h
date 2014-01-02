@@ -31,7 +31,7 @@ public:
 	/*
 	 * name: log
 	 * description: use to output the log information,
-	 * usage: Logging::log(1, "i am feel really panic!");
+	 * usage: Logging::log(LOG_LEVEL_DEBUG, "i am feel really panic!");
 	 * parameter string log msg
 	 */
 	static int log(log_level_t log_level, std::string, int _line = __LINE__, char* _file = __FILE__);
@@ -48,6 +48,10 @@ private:
      * 5 - warning. Undesired but okay issue such as "high network delay" or "one hand is missing".
 	 */
 	static log_level_t _log_level;	
+#if (!LOG_OUTPUT_CONSOLE)
+	FILE* LOG_OUTPUT;
+#endif
+	
 };
 
 }
